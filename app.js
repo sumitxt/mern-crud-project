@@ -2,6 +2,7 @@ const express=require('express')
 const router=require('./src/route/api')
 const app =   express();
 const bodyParser=require('body-parser')
+require('dotenv').config({path:'./config.env'})
 
 
 //security middleware
@@ -34,6 +35,14 @@ app.use(bodyParser.json())
 const Limiter=rateLimit({windowMs:15*60*100,max:3000})
 
 //database
+let URI=process.env.URI
+mongoose.connect(URI,(error)=>{
+    if(error){
+        console.log(error)
+    }
+    console.log("Connection Successful")
+
+})
 
 //Front end routing
 app.use(express.static('client/build'))
