@@ -14,7 +14,7 @@ exports.CreateProduct = (req, res) => {
 
 exports.ReadProduct = (req, res) => {
     let Query = {}
-    let Projection = "ProductName ProductCode Img UnitPrice Qty TotalPrice"
+    let Projection = "ProductName ProductCode ProductImage UnitPrice Quantity TotalPrice"
     ProductsModel.find(Query, Projection, (err, data) => {
         if (err) {
             res.status(400).json({status: "fail", data: err})
@@ -42,7 +42,7 @@ exports.DeleteProduct = (req, res) => {
     let id = req.params.id;
     let Query = {_id: id};
 
-    ProductsModel.deleteOne(Query, reqBody, (err, data) => {
+    ProductsModel.deleteOne(Query, (err, data) => {
         if (err) {
             res.status(400).json({status: "fail", data: err})
         } else {
