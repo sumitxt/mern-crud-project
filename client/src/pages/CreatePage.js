@@ -1,12 +1,12 @@
 import React from 'react';
-import CreateForm from "../components/Create/CreateForm";
 import AppNavBar from "../components/Common/AppNavBar";
+import CreateForm from "../components/Create/CreateForm";
 
 const CreatePage = () => {
     return (
         <div>
-            <AppNavBar></AppNavBar>
-            <CreateForm></CreateForm>
+            <AppNavBar/>
+            <CreateForm/>
         </div>
     );
 };

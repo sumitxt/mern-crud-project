@@ -11,8 +11,8 @@ class App extends Component {
                 <BrowserRouter>
                     <Routes>
                         <Route exact path="/" element={<ReadPage/>}/>
-                        <Route exact path="/create" component={<CreatePage/>}/>
-                        <Route exact path="/update" component={<UpdatePage/>}/>
+                        <Route exact path="/create" element={<CreatePage/>}/>
+                        <Route exact path="/update" element={<UpdatePage/>}/>
                     </Routes>
                 </BrowserRouter>
             </Fragment>
