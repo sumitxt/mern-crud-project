@@ -5,7 +5,6 @@ const bodyParser = require('body-parser')
 require('dotenv').config({path: './config.env'})
 
 
-
 //security middleware
 const rateLimit = require('express-rate-limit')
 const helmet = require('helmet')
