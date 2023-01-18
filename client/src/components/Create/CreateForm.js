@@ -16,31 +16,27 @@ const CreateForm = () => {
 
         //validation
         if (isEmpty(Product_Name)) {
-            alert("Product Name empty")
-            toast.success("Product Name empty")
-            // ErrorToast("Product Code required")
+            ErrorToast("Product Name required")
         }
-        //  else if (isEmpty(Product_Code)) {
-        //     ErrorToast("Product Code required")
-        // } else if (isEmpty(Product_Image)) {
-        //     ErrorToast("Product Image is required")
-        // } else if (isEmpty(Unit_Price)) {
-        //     ErrorToast("Product Unit Price is required")
-        // } else if (isEmpty(Product_Quantity)) {
-        //     ErrorToast("Product Quantity is required")
-        // } else if (isEmpty(Total_Price)) {
-        //     ErrorToast("Product Price is required")
-        // }
+         else if (isEmpty(Product_Code)) {
+            ErrorToast("Product Code required")
+        } else if (isEmpty(Product_Image)) {
+            ErrorToast("Product Image is required")
+        } else if (isEmpty(Unit_Price)) {
+            ErrorToast("Product Unit Price is required")
+        } else if (isEmpty(Product_Quantity)) {
+            ErrorToast("Product Quantity is required")
+        } else if (isEmpty(Total_Price)) {
+            ErrorToast("Product Price is required")
+        }
         else{
             Create(Product_Name, Product_Code, Product_Image, Unit_Price, Product_Quantity, Total_Price)
                 .then((Result)=>{
                 if(Result===true){
-                    // SuccessToast("Data Save Success")
-                    alert("Data Saved Successfully")
+                    SuccessToast("Data Save Success")
                 }
                 else{
-                    // ErrorToast("Request failed! Try again")
-                    alert("Data failed to save")
+                    ErrorToast("Request failed! Try again")
                 }
             })
         }
@@ -78,6 +74,7 @@ const CreateForm = () => {
             <div className="row">
                 <button onClick={SaveData} className="btn btn-primary w-100">Save</button>
             </div>
+
         </div>
     );
 };

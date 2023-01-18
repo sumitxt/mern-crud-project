@@ -7,6 +7,7 @@ const CreatePage = () => {
         <div>
             <AppNavBar/>
             <CreateForm/>
+
         </div>
     );
 };

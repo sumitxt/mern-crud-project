@@ -1,12 +1,13 @@
-import React, {Component, Fragment} from 'react';
+import React, {Fragment} from 'react';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import ReadPage from "./pages/ReadPage";
 import CreatePage from "./pages/CreatePage";
 import UpdatePage from "./pages/UpdatePage";
+import {Toaster} from "react-hot-toast";
 
-class App extends Component {
-    render() {
-        return (
+
+const App = () => {
+    return (
             <Fragment>
                 <BrowserRouter>
                     <Routes>
@@ -15,9 +16,10 @@ class App extends Component {
                         <Route exact path="/update" element={<UpdatePage/>}/>
                     </Routes>
                 </BrowserRouter>
+                <Toaster/>
             </Fragment>
-        );
-    }
-}
+
+    );
+};
 
 export default App;
