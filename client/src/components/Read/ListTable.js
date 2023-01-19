@@ -1,14 +1,30 @@
 import React, {useEffect, useState} from 'react';
-import {Read} from "../../APIServices/CRUDServices";
+import {Delete, Read} from "../../APIServices/CRUDServices";
 import FullScreenLoader from "../Common/FullScreenLoader";
+import {ErrorToast, SuccessToast} from "../../Helper/ValidationHelper";
+import {withRouter} from "react-router";
 
-const ListTable = () => {
+const ListTable = (props) => {
     let [DataList, SetDataList] = useState([])
     useEffect(() => {
         Read().then((Result) => {
             SetDataList(Result)
         })
     }, [])
+
+  const DeleteItem=(id)=>{
+        Delete(id).then((result)=>{
+            if(result===true){
+                SuccessToast("Delete Success")
+                props.history.push("/")
+            }else{
+                ErrorToast("Delete Failed")
+            }
+        })
+  }
+    const UpdateItem=(id)=>{
+        props.history.push("/update/"+id)
+    }
 
     if(DataList.length>0){
         return (
@@ -22,6 +38,7 @@ const ListTable = () => {
                         <th>Unit Price</th>
                         <th>Quantity</th>
                         <th>Total Price</th>
+                        <th>Action</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -31,13 +48,13 @@ const ListTable = () => {
                                 <tr>
                                     <td>{item.ProductName}</td>
                                     <td>{item.ProductCode}</td>
-                                    <td><img className="list-img" src={item.ProductImage}/></td>
+                                    <td><img className="list-img" src={item.ProductImage} alt=""/></td>
                                     <td>{item.UnitPrice}</td>
                                     <td>{item.Quantity}</td>
                                     <td>{item.TotalPrice}</td>
                                     <td>
-                                        <button className="btn btn-danger mx-1" >Delete</button>
-                                        <button className="btn btn-primary mx-1">Update</button>
+                                        <button onClick={DeleteItem.bind(this,item._id)} className="btn btn-danger mx-1" >Delete</button>
+                                        <button onClick={UpdateItem.bind(this,item._id)} className="btn btn-primary mx-1">Update</button>
                                     </td>
                                 </tr>
                             )
@@ -59,4 +76,4 @@ const ListTable = () => {
 
 };
 
-export default ListTable;
+export default withRouter(ListTable);
