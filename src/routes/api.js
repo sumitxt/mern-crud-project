@@ -5,6 +5,7 @@ const ProductsController = require("../controllers/ProductsController")
 
 router.post("/CreateProduct", ProductsController.CreateProduct)
 router.post("/ReadProduct", ProductsController.ReadProduct)
+router.post("/ReadProductByID/:id", ProductsController.ReadProductByID)
 router.post("/UpdateProduct/:id", ProductsController.UpdateProduct)
 router.post("/DeleteProduct/:id", ProductsController.DeleteProduct)
 

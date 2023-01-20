@@ -37,6 +37,20 @@ export function Read() {
     });
 }
 
+export function ReadByID(id) {
+    let URL = "/api/v1/ReadProductByID/"+id
+    return axios.post(URL).then((res) => {
+        if (res.status === 200) {
+            return res.data['data'];
+        } else {
+            return false;
+        }
+
+    }).catch((err) => {
+        console.log(err)
+        return false;
+    });
+}
 export function Update(id, ProductName, ProductCode, ProductImage, UnitPrice, Quantity, TotalPrice) {
     let URL = "/api/v1/UpdateProduct/" + id;
     let PostBody = {

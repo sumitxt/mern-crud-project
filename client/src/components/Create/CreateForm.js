@@ -2,8 +2,10 @@ import React, {Fragment, useRef} from 'react';
 import {ErrorToast, isEmpty, SuccessToast} from "../../Helper/ValidationHelper";
 import {Create} from "../../APIServices/CRUDServices";
 import FullScreenLoader from "../Common/FullScreenLoader";
+import {withRouter} from "react-router";
 
-const CreateForm = () => {
+
+const CreateForm = (props) => {
     let ProductName, ProductCode, ProductImage, UnitPrice, Quantity, TotalPrice, Loader = useRef()
 
     const SaveData = () => {
@@ -33,12 +35,7 @@ const CreateForm = () => {
                 .then((Result) => {
                     if (Result === true) {
                         SuccessToast("Data Save Success")
-                        ProductName.value = "";
-                        ProductCode.value = "";
-                        ProductImage.value = "";
-                        UnitPrice.value = "";
-                        Quantity.value = "";
-                        TotalPrice.value = "";
+                        props.history.push("/")
                     } else {
                         ErrorToast("Request failed! Try again")
                     }
@@ -87,4 +84,4 @@ const CreateForm = () => {
     );
 };
 
-export default CreateForm;
+export default withRouter(CreateForm);
