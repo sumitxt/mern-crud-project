@@ -35,6 +35,8 @@ app.use(bodyParser.json())
 const Limiter = rateLimit({windowMs: 15 * 60 * 100, max: 3000})
 
 //database
+mongoose.set('strictQuery', true);
+
 let URI = process.env.URI
 let OPTION = {user: process.env.DB_USER, pass: process.env.DB_PASS, autoIndex: true}
 mongoose.connect(URI, OPTION, (error) => {
