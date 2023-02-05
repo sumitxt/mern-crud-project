@@ -7,6 +7,7 @@ import {Toaster} from "react-hot-toast";
 import {Route, Switch} from "react-router";
 
 
+
 const App = () => {
     return (
         <Fragment>

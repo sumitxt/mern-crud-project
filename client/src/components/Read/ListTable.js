@@ -1,8 +1,10 @@
-import React, {useEffect, useState} from 'react';
-import {Delete, Read} from "../../APIServices/CRUDServices";
+import React, { useEffect, useState } from 'react';
+import { Delete, Read } from "../../APIServices/CRUDServices";
 import FullScreenLoader from "../Common/FullScreenLoader";
-import {ErrorToast, SuccessToast} from "../../Helper/ValidationHelper";
-import {withRouter} from "react-router";
+import { ErrorToast, SuccessToast } from "../../Helper/ValidationHelper";
+import { withRouter } from "react-router";
+import { MDBBtn } from 'mdb-react-ui-kit';
+
 
 const ListTable = (props) => {
     let [DataList, SetDataList] = useState([])
@@ -12,54 +14,58 @@ const ListTable = (props) => {
         })
     }, [])
 
-  const DeleteItem=(id)=>{
-        Delete(id).then((result)=>{
-            if(result===true){
+    const DeleteItem = (id) => {
+        Delete(id).then((result) => {
+            if (result === true) {
                 SuccessToast("Delete Success")
                 props.history.push("/")
-            }else{
+            } else {
                 ErrorToast("Delete Failed")
             }
         })
-  }
-    const UpdateItem=(id)=>{
-        props.history.push("/update/"+id)
+    }
+    const UpdateItem = (id) => {
+        props.history.push("/update/" + id)
     }
 
-    if(DataList.length>0){
+    if (DataList.length > 0) {
         return (
             <div>
                 <table className="table table-bordered">
                     <thead>
-                    <tr>
-                        <th>Product Name</th>
-                        <th>Product Code</th>
-                        <th>Image</th>
-                        <th>Unit Price</th>
-                        <th>Quantity</th>
-                        <th>Total Price</th>
-                        <th>Action</th>
-                    </tr>
+                        <tr>
+                            <th>Product Name</th>
+                            <th>Product Code</th>
+                            <th>Image</th>
+                            <th>Unit Price</th>
+                            <th>Quantity</th>
+                            <th>Total Price</th>
+                            <th>Action</th>
+                        </tr>
                     </thead>
                     <tbody>
-                    {
-                        DataList.map((item,i)=>{
-                            return(
-                                <tr>
-                                    <td>{item.ProductName}</td>
-                                    <td>{item.ProductCode}</td>
-                                    <td><img className="list-img" src={item.ProductImage} alt=""/></td>
-                                    <td>{item.UnitPrice}</td>
-                                    <td>{item.Quantity}</td>
-                                    <td>{item.TotalPrice}</td>
-                                    <td>
-                                        <button onClick={DeleteItem.bind(this,item._id)} className="btn btn-danger mx-1" >Delete</button>
-                                        <button onClick={UpdateItem.bind(this,item._id)} className="btn btn-primary mx-1">Update</button>
-                                    </td>
-                                </tr>
-                            )
-                        })
-                    }
+                        {
+                            DataList.map((item, i) => {
+                                return (
+                                    <tr>
+                                        <td>{item.ProductName}</td>
+                                        <td>{item.ProductCode}</td>
+                                        <td><img className="list-img" src={item.ProductImage} width="20px" alt="" /></td>
+                                        <td>{item.UnitPrice}</td>
+                                        <td>{item.Quantity}</td>
+                                        <td>{item.TotalPrice}</td>
+                                        <td>
+                                            <MDBBtn onClick={UpdateItem.bind(this, item._id)} className='me-1 mx-1' color='secondary'>
+                                                Update
+                                            </MDBBtn>
+                                            <MDBBtn onClick={DeleteItem.bind(this, item._id)} className='me-1 mx-1' color='danger'>
+                                                Delete
+                                            </MDBBtn>
+                                        </td>
+                                    </tr>
+                                )
+                            })
+                        }
                     </tbody>
                 </table>
             </div>
@@ -68,7 +74,7 @@ const ListTable = (props) => {
     else {
         return (
             <div>
-                <FullScreenLoader/>
+                <FullScreenLoader />
             </div>
         )
     }

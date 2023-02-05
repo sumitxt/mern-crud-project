@@ -7,12 +7,12 @@ const AppNavBar = () => {
         <div>
             <Navbar bg="light" expand="lg">
                 <Container>
-                    <Navbar.Brand href="/">CRUD</Navbar.Brand>
+                    <Navbar.Brand href="/"><i class="fa-solid fa-house"></i> CRUD</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav"/>
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">
-                            <Nav.Link><NavLink to="/">List</NavLink></Nav.Link>
-                            <Nav.Link><NavLink to="/create">Create</NavLink></Nav.Link>
+                            <Nav.Link><NavLink to="/"><i class="fa-solid fa-list"></i> List</NavLink></Nav.Link>
+                            <Nav.Link><NavLink to="/create"><i class="fa-solid fa-plus"></i> Create</NavLink></Nav.Link>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
