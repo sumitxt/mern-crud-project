@@ -1,5 +1,6 @@
 import React from 'react';
-import loader from "../../assets/img/loader.svg"
+// import loader from "../../assets/img/loader.svg"
+import loader from "../../assets/img/loader2.gif"
 
 const FullScreenLoader = () => {
     return (
