@@ -24,6 +24,14 @@ app.use(helmet())
 app.use(mongoSanitize())
 app.use(xss())
 app.use(hpp())
+app.use(
+    helmet.contentSecurityPolicy({
+      useDefaults: true,
+      directives: {
+        "img-src": ["'self'", "https: data:"]
+      }
+    })
+  )
 
 
 //bodyParser

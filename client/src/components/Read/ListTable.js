@@ -50,7 +50,7 @@ const ListTable = (props) => {
                                     <tr>
                                         <td>{item.ProductName}</td>
                                         <td>{item.ProductCode}</td>
-                                        <td><img className="list-img" src={item.ProductImage} width="20px" alt="" /></td>
+                                        <td><img crossOrigin="anonymous" className="list-img" src={item.ProductImage} width="20px" alt="" /></td>
                                         <td>{item.UnitPrice}</td>
                                         <td>{item.Quantity}</td>
                                         <td>{item.TotalPrice}</td>
